@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Footer from '../components/Footer.astro';
+import { faq } from '../data/faq';
+---
+
+<Base title="FAQ — Sophia & Alex 2026">
+  <Nav />
+  <PageHero video="/videos/689dd61eec8c0cdde3729d5d_30.webm">Frequently Asked<br />Questions</PageHero>
+
+  <section class="section-cream faq-section">
+    <div class="content-wrap">
+
+      <p class="faq-intro prose-wrap" data-fade>
+        We have gathered answers to the most common questions about our wedding weekend —
+        from travel tips to what to wear. If you don't find what you're looking for here,
+        feel free to reach out to us at
+        <a href="mailto:ciao@sophiaalex2026.com">ciao@sophiaalex2026.com</a>.
+      </p>
+
+      <div class="faq-list" data-stagger>
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-item__q">
+              <span>{item.question}</span>
+            </summary>
+            <div class="faq-item__a">
+              {item.image && (
+                <img class="faq-item__img" src={item.image} alt={item.imageAlt ?? ''} loading="lazy" />
+              )}
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <ContactBlock />
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .faq-section {
+    /* section-cream handles padding-block */
+  }
+
+  .faq-section .content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
+  }
+
+  /* Intro */
+  .faq-intro {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .faq-intro a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* FAQ list */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Each item */
+  .faq-item {
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .faq-item:last-child {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  /* Question row — centered label style matching live site */
+  .faq-item__q {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--sp-8);   /* generous — matches live site breathing room */
+    cursor: pointer;
+    list-style: none;
+    text-align: center;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .faq-item__q::-webkit-details-marker { display: none; }
+
+  .faq-item__q:hover { opacity: 0.55; }
+
+  .faq-item__q span {
+    font-family: var(--font-label);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  /* Answer — revealed below */
+  .faq-item__a {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding-bottom: var(--sp-8);
+    padding-inline: var(--sp-4);
+    animation: answer-open 350ms var(--ease-enter) both;
+  }
+
+  @keyframes answer-open {
+    from { opacity: 0; transform: translateY(-0.5rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .faq-item__img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin-inline: auto;
+    margin-bottom: var(--sp-6);
+    display: block;
+    opacity: 0.92;
+  }
+
+  .faq-item__a p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .faq-item__q {
+      padding-block: var(--sp-5);
+    }
+
+    .faq-item__a {
+      padding-bottom: var(--sp-5);
+    }
+  }
+</style>

@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="RSVP — Sophia & Alex 2026">
+  <Nav />
+  <PageHero subtitle="Please RSVP before March 1st 2026">RSVP</PageHero>
+
+  <section class="section-cream closed">
+    <div class="content-wrap closed__wrap">
+      <div class="closed__card" data-fade>
+        <div class="closed__ornament closed__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="closed__body">
+          The deadline to respond has passed and we are no longer accepting RSVPs.
+          If you have any questions, please reach out to us directly at
+          <a href="mailto:ciao@sophiaalex2026.com">ciao@sophiaalex2026.com</a>.
+        </p>
+        <div class="closed__ornament closed__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Closed state ── */
+  .closed__wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .closed__card {
+    max-width: 640px;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+
+  .closed__card p {
+    padding: var(--sp-2) 0;
+
+  }
+
+  .closed__ornament {
+    width: 140px;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  .closed__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.4;
+  }
+
+  .closed__ornament--top    { margin-top: -34px; }
+  .closed__ornament--bottom { margin-bottom: -34px; transform: scaleY(-1); }
+
+  .closed__eyebrow {
+    opacity: 0.45;
+  }
+
+  .closed__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .closed__body a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .closed__glyph {
+    margin-top: var(--sp-2);
+    margin-bottom: var(--sp-2);
+  }
+
+  .closed__glyph img {
+    height: 2.5rem;
+    width: auto;
+    opacity: 0.2;
+  }
+
+  @media (max-width: 767px) {
+    .closed__card { padding: 0 var(--sp-6); }
+  }
+
+  /* ── Legacy form styles (kept for reference) ── */
+  .rsvp-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+  }
+
+  .rsvp-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-8);
+  }
+
+  .rsvp-intro {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* Form */
+  .rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .field--set {
+    gap: var(--sp-3);
+  }
+
+  .field__label {
+    font-family: var(--font-label);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.45;
+  }
+
+  .field__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--cream-dark);
+    padding-block: var(--sp-2);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 300;
+    color: var(--text-dark);
+    outline: none;
+    resize: vertical;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .field__input:focus {
+    border-bottom-color: var(--green);
+  }
+
+  .field__input::placeholder {
+    opacity: 0.3;
+    font-style: italic;
+  }
+
+  /* Radio */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .radio {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--sp-3);
+    align-items: start;
+    padding: var(--sp-4) var(--sp-4);
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .radio:hover {
+    border-color: rgba(29,46,30,0.3);
+  }
+
+  .radio input { display: none; }
+
+  .radio__dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--cream-dark);
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .radio__dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--green);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .radio input:checked ~ .radio__dot { border-color: var(--green); }
+  .radio input:checked ~ .radio__dot::after { opacity: 1; }
+
+  .radio span:last-child {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+</style>

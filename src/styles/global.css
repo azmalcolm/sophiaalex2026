@@ -1,0 +1,139 @@
+@import './reset.css';
+@import './tokens.css';
+@import './fonts.css';
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 400;
+  color: var(--text-dark);
+  background-color: var(--cream);
+}
+
+/* ── Layout wrappers ─────────────────────────── */
+
+/* Full-width section wrapper — adds block padding */
+.section-cream {
+  background-color: var(--cream);
+  background-image: url('/images/grain.jpg');
+  background-size: 300px;
+  padding-block: var(--sp-16);
+}
+
+/* Centered max-width container */
+.content-wrap {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Narrow reading column */
+.prose-wrap {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+/* ── Typography roles ────────────────────────── */
+
+/* Ivy Ora Display Thin — hero + page titles */
+.display {
+  font-family: var(--font-display);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+/* Open Sans SemiBold — labels, eyebrows, section headings */
+.label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ── Dividers ────────────────────────────────── */
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--cream-dark);
+}
+
+/* ── Buttons ─────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.btn:hover {
+  opacity: 0.78;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--text-light);
+}
+
+/* ── Scroll-entrance animations ──────────────── */
+
+[data-fade] {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity var(--duration-page) var(--ease-enter),
+    transform var(--duration-page) var(--ease-enter);
+}
+
+[data-fade].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered children */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity var(--duration-page) var(--ease-enter),
+    transform var(--duration-page) var(--ease-enter);
+}
+
+[data-stagger].is-visible > *:nth-child(1)  { opacity: 1; transform: none; transition-delay:   0ms; }
+[data-stagger].is-visible > *:nth-child(2)  { opacity: 1; transform: none; transition-delay:  80ms; }
+[data-stagger].is-visible > *:nth-child(3)  { opacity: 1; transform: none; transition-delay: 160ms; }
+[data-stagger].is-visible > *:nth-child(4)  { opacity: 1; transform: none; transition-delay: 240ms; }
+[data-stagger].is-visible > *:nth-child(5)  { opacity: 1; transform: none; transition-delay: 320ms; }
+[data-stagger].is-visible > *:nth-child(6)  { opacity: 1; transform: none; transition-delay: 400ms; }
+[data-stagger].is-visible > *:nth-child(n+7){ opacity: 1; transform: none; transition-delay: 480ms; }
+
+/* ── Responsive ──────────────────────────────── */
+
+@media (max-width: 767px) {
+  .section-cream {
+    padding-block: var(--sp-10);
+  }
+}

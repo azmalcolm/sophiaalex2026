@@ -1,0 +1,132 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Registry — Sophia & Alex 2026">
+  <Nav />
+  <PageHero video="/videos/689dd64e988ce28926f06639_40.webm">Registry</PageHero>
+
+  <section class="section-cream">
+    <div class="content-wrap registry">
+
+      <div class="booking-card" data-fade>
+        <div class="booking-card__ornament booking-card__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <div class="booking-card__body" data-fade>
+        <p>
+          Your presence at our wedding is the greatest gift we could ask for, and we truly
+          don't expect anything more. We're not setting up a registry — celebrating together
+          in Italy is all we wish for! Should you wish to give something, we kindly ask that it's small or sent to our home, as we will be travelling after the wedding.
+        </p>
+      </div>
+        <div class="booking-card__ornament booking-card__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+
+
+      <ContactBlock />
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .registry {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .registry__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .registry__text p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .registry__text p:last-child {
+    opacity: 0.7;
+  }
+
+  /* ── Booking card ── */
+
+  .booking-card {
+    max-width: 860px;
+    margin-inline: auto;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-6);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-5);
+  }
+
+  .booking-card__ornament {
+    width: 160px;
+    margin-inline: auto;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  .booking-card__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .booking-card__ornament--top {
+    margin-top: -38px;
+    margin-bottom: 0;
+  }
+
+  .booking-card__ornament--bottom {
+    margin-bottom: -38px;
+    margin-top: 0;
+    transform: scaleY(-1);
+  }
+
+  .booking-card__eyebrow {
+    opacity: 0.45;
+  }
+
+  .booking-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    text-align: left;
+    max-width: var(--content-width);
+  }
+
+  .booking-card__body p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .booking-card__body a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+</style>

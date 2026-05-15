@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Footer from '../components/Footer.astro';
+import { schedule } from '../data/schedule';
+---
+
+<Base title="The Schedule — Sophia & Alex 2026">
+  <Nav />
+  <PageHero video="/videos/689dd5d4423eee289435cbe2_17.webm">The Schedule</PageHero>
+
+  <section class="section-cream schedule-section">
+    {schedule.map((day, i) => (
+      <div class={`day ${i % 2 !== 0 ? 'day--flip' : ''}`} data-fade>
+        <!-- Day label centered above -->
+        <p class="label day__label">{day.day}</p>
+
+        <!-- Two-col: card bleeds left, photo bleeds right -->
+        <div class="day__cols">
+          <div class="day__card-col">
+            <div class="day__card">
+              <div class="day__card-ornament day__card-ornament--top" aria-hidden="true">
+                <img src="/images/ornament.png" alt="" />
+              </div>
+              <h2 class="day__card-title display">{day.title}</h2>
+              <p class="day__card-body">{day.description}</p>
+              <div class="day__card-dresscode">
+                <p>Dresscode: {day.dresscode}</p>
+              </div>
+              <div class="day__card-meta">
+                <span class="label">{day.venue}</span>
+                <span class="label">{day.time}</span>
+                <span class="label">{day.day} · {day.date}</span>
+              </div>
+              <div class="day__card-ornament day__card-ornament--bottom" aria-hidden="true">
+                <img src="/images/ornament.png" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="day__photo-col">
+            <img
+              src={day.image}
+              alt={day.imageAlt}
+              class="day__photo"
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+        </div>
+      </div>
+    ))}
+
+    <div class="schedule-contact content-wrap">
+      <ContactBlock />
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .schedule-section {
+    padding-block: 0;
+    overflow: hidden;
+  }
+
+  /* Each day block */
+  .day {
+    padding-top: var(--sp-10);
+    padding-bottom: var(--sp-0);
+    position: relative;
+  }
+
+  .day:not(:first-child) {
+  }
+
+  /* Centered label */
+  .day__label {
+    text-align: center;
+    opacity: 0.45;
+    margin-bottom: var(--sp-10);
+    display: block;
+  }
+
+  /* Two columns */
+  .day__cols {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    align-items: center;
+    min-height: 520px;
+  }
+
+  /* Flipped layout: photo left, card right */
+  .day--flip .day__card-col { order: 2; }
+  .day--flip .day__photo-col { order: 1; }
+
+  /* Card side — bleeds past left gutter */
+  .day__card-col {
+    padding-left: var(--gutter);
+    padding-right: var(--sp-8);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .day--flip .day__card-col {
+    padding-left: var(--sp-8);
+    padding-right: var(--gutter);
+    justify-content: flex-start;
+  }
+
+  /* The card itself */
+  .day__card {
+    position: relative;
+    background: var(--cream);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    /* no top/bottom padding — ornament controls edge spacing */
+    padding: 0 var(--sp-8);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    transform: rotate(-4deg);
+    transform-origin: center center;
+    overflow: visible;
+  }
+
+  .day--flip .day__card {
+    transform: rotate(3.5deg);
+  }
+
+  .day__card-ornament {
+    width: 180px;
+    margin-inline: auto;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  .day__card-ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .day__card-ornament--top {
+    margin-top: -40px;
+    margin-bottom: var(--sp-4);
+  }
+
+  .day__card-ornament--bottom {
+    margin-bottom: -43px;
+    margin-top: var(--sp-4);
+    transform: scaleY(-1);
+  }
+
+  .day__card-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    text-align: center;
+    color: var(--text-dark);
+    font-style: italic;
+    font-weight: 100;
+  }
+
+  .day__card-body {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .day__card-dresscode {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    padding: var(--sp-2) var(--sp-4);
+    background: rgba(221, 216, 206, 0.5);
+    border-radius: var(--radius-sm);
+  }
+
+  .day__card-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    padding-top: var(--sp-3);
+    flex-wrap: wrap;
+  }
+
+  .day__card-meta .label {
+    opacity: 0.5;
+  }
+
+  /* Photo side — full-bleed to screen edge */
+  .day__photo-col {
+    overflow: hidden;
+    align-self: stretch;
+    min-height: 520px;
+    aspect-ratio: 1;
+    /* extend to the right edge of the viewport */
+    margin-right: calc(-1 * var(--gutter));
+  }
+
+  .day--flip .day__photo-col {
+    margin-right: 0;
+    margin-left: calc(-1 * var(--gutter));
+  }
+
+  .day__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Contact section */
+  .schedule-contact {
+    padding-block: var(--sp-10);
+  }
+
+  @media (max-width: 900px) {
+    .day__cols {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    /* Reset flip — photo always first on mobile */
+    .day--flip .day__card-col  { order: unset; }
+    .day--flip .day__photo-col { order: unset; }
+
+    .day__photo-col,
+    .day--flip .day__photo-col {
+      order: -1;
+      margin-right: calc(-1 * var(--gutter));
+      margin-left: calc(-1 * var(--gutter));
+      min-height: 280px;
+    }
+
+    .day__card-col,
+    .day--flip .day__card-col {
+      padding-inline: var(--gutter);
+      justify-content: center;
+    }
+
+    .day__card {
+      transform: rotate(-2deg);
+      max-width: 100%;
+    }
+
+    .day--flip .day__card {
+      transform: rotate(2deg);
+    }
+
+    .day__card-body {
+      transform: none;
+    }
+  }
+</style>

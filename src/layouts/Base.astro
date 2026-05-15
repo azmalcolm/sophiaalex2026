@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'The wedding of Sophia Söderström & Alexander Zeeman — 3rd & 4th of July 2026, Monforte d\'Alba, Italy.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="https://use.typekit.net/ybq6gcs.css" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import Lenis from 'lenis';
+
+      const lenis = new Lenis();
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Scroll parallax for [data-parallax] elements
+      const parallaxEls = document.querySelectorAll<HTMLElement>('[data-parallax]');
+      if (parallaxEls.length) {
+        // Delay until entry animations finish before registering
+        setTimeout(() => {
+          window.addEventListener('scroll', () => {
+            const sy = window.scrollY;
+            parallaxEls.forEach(el => {
+              el.style.transform = `translateY(${sy * 0.28}px)`;
+            });
+          }, { passive: true });
+        }, 1500);
+      }
+
+      // Intersection observer for [data-fade]
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('[data-fade], [data-stagger]').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

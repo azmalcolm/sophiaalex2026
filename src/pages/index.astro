@@ -1,0 +1,629 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { story } from '../data/story';
+---
+
+<Base title="Sophia & Alex 2026">
+  <Nav />
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="/images/footer-vineyards.jpg">
+      <source src="/videos/hero.webm" type="video/webm" />
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content" data-parallax>
+      <p class="label hero__eyebrow">The Wedding of</p>
+      <h1 class="hero__title display">
+        Sophia Söderström<br />Alexander Zeeman
+      </h1>
+      <p class="label hero__date">3rd &amp; 4th of July</p>
+    </div>
+  </section>
+
+  <!-- ── Welcome ── -->
+  <section class="section-cream welcome">
+    <div class="content-wrap">
+      <div class="welcome__card" data-fade>
+        <div class="welcome__ornament welcome__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label welcome__heading">Now that you're officially on the guest list</p>
+        <p class="welcome__body">
+          This website is your guide to the weekend. Everything you need to feel prepared and
+          excited for what's ahead. Here you'll find details on when and where each part of the
+          celebration will take place, what to wear, how to get there, and what to expect along
+          the way. We've also shared a bit of the story behind the day and how it was that we
+          managed to make it here.
+        </p>
+        <div class="welcome__ornament welcome__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Their Story ── -->
+  <section class="section-cream story">
+    <p class="label story__eyebrow" data-fade>Their Story</p>
+
+    <div class="story__timeline">
+      {story.map((entry, i) => (
+        <div class={`story__entry ${i % 2 === 0 ? '' : 'story__entry--flip'}`} data-fade>
+          <div class="story__text">
+            <p class="label story__date">{entry.date}</p>
+            <p class="story__body">{entry.text}</p>
+          </div>
+          <div class="story__image">
+            <img src={entry.image} alt={entry.imageAlt} loading="lazy" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Countdown ── -->
+  <section class="section-cream countdown-section" data-fade>
+    <div class="content-wrap countdown-wrap">
+      <div class="welcome__ornament welcome__ornament--top" aria-hidden="true">
+        <img src="/images/ornament.png" alt="" />
+      </div>
+      <div class="countdown" id="countdown">
+        <div class="countdown__unit">
+          <span class="countdown__number display" id="cd-days">–</span>
+          <span class="label countdown__label">Days</span>
+        </div>
+        <div class="countdown__sep display" aria-hidden="true">·</div>
+        <div class="countdown__unit">
+          <span class="countdown__number display" id="cd-hours">–</span>
+          <span class="label countdown__label">Hrs</span>
+        </div>
+        <div class="countdown__sep display" aria-hidden="true">·</div>
+        <div class="countdown__unit">
+          <span class="countdown__number display" id="cd-minutes">–</span>
+          <span class="label countdown__label">Min</span>
+        </div>
+        <div class="countdown__sep display" aria-hidden="true">·</div>
+        <div class="countdown__unit">
+          <span class="countdown__number display" id="cd-seconds">–</span>
+          <span class="label countdown__label">Sec</span>
+        </div>
+      </div>
+      <div class="welcome__ornament welcome__ornament--bottom" aria-hidden="true">
+        <img src="/images/ornament.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Secondary nav links ── -->
+  <section class="section-cream page-links" data-fade>
+    <div class="page-links__wrap">
+      <div class="page-links__ornament" aria-hidden="true">
+        <img src="/images/ornament.png" alt="" />
+      </div>
+      <nav class="page-links__list">
+        <a href="/schedule" class="label page-links__link">The Schedule</a>
+        <a href="/beccaris" class="label page-links__link">Getting to Beccaris</a>
+        <a href="/monforte" class="label page-links__link">Staying in Monforte D'Alba</a>
+        <a href="/faq" class="label page-links__link">Frequently Asked Questions</a>
+      </nav>
+      <div class="page-links__ornament page-links__ornament--bottom" aria-hidden="true">
+        <img src="/images/ornament.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Questions ── -->
+  <section class="section-cream questions" data-fade>
+    <div class="questions__wrap">
+      <p class="questions__body">
+        For any questions about travel, accommodations, or the weekend schedule, please first check
+        the information here or visit our <a href="/faq">FAQ section</a>. If you still can't find
+        what you need, reach out at
+        <a href="mailto:ciao@sophiaalex2026.com">ciao@sophiaalex2026.com</a>.
+      </p>
+      <p class="questions__body">
+        For speeches or toasts, contact our toastmasters at
+        <a href="mailto:toastmasters@sophiaalex2026.com">toastmasters@sophiaalex2026.com</a>.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Hero ─────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--green);
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(29, 46, 30, 0.15) 0%,
+      rgba(29, 46, 30, 0.7) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-inline: var(--gutter);
+    /* 32vh from bottom ≈ content sits at ~68% down the viewport */
+    padding-bottom: clamp(8rem, 40vh, 20rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+    animation: hero-rise 1.2s var(--ease-enter) both;
+    animation-delay: 200ms;
+    max-width: 80vw;
+  }
+
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero__eyebrow {
+    color: var(--text-muted);
+  }
+
+  .hero__title {
+    font-size: var(--text-hero);
+    color: var(--text-light);
+    line-height: 0.92;
+  }
+
+  .hero__date {
+    color: var(--text-muted);
+    margin-top: var(--sp-2);
+  }
+
+  /* ── Welcome ──────────────────────────────── */
+  .welcome {
+    text-align: center;
+  }
+
+  .welcome__card {
+    max-width: 1060px;
+    margin-inline: auto;
+    padding: 0 var(--sp-10);
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 300px;
+    box-shadow: var(--shadow-card);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome__ornament {
+    width: 180px;
+    flex-shrink: 0;
+  }
+
+  .welcome__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .welcome__ornament--top {
+    margin-top: -42px;
+    margin-bottom: var(--sp-8);
+  }
+
+  .welcome__ornament--bottom {
+    margin-bottom: -44px;
+    margin-top: var(--sp-8);
+    transform: scaleY(-1);
+  }
+
+  .welcome__heading {
+    opacity: 0.5;
+    margin-bottom: var(--sp-5);
+  }
+
+  .welcome__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-dark);
+    text-align: center;
+    max-width: 680px;
+  }
+
+  /* ── Story ────────────────────────────────── */
+  .story {
+    padding-block: var(--sp-10);
+  }
+
+  .story__eyebrow {
+    display: block;
+    text-align: center;
+    margin-bottom: var(--sp-10);
+    opacity: 0.45;
+  }
+
+  .story__timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .story__entry {
+    max-width: 800px;
+    margin-inline: auto;
+    width: 100%;
+    padding-inline: var(--gutter);
+    display: grid;
+    /* text col ~33%, gutter 100px, image col fills rest */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+    padding-block: var(--sp-4);
+  }
+
+  /* Flip: image left, text right */
+  .story__entry--flip .story__text  { order: 2; }
+  .story__entry--flip .story__image { order: 1; }
+
+  .story__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    align-self: center;
+  }
+
+  .story__date {
+    opacity: 0.45;
+  }
+
+  .story__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* Illustration — natural size, offset down for stagger */
+  .story__image {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .story__entry--flip .story__image {
+  }
+
+  .story__image img {
+    width: 100%;
+    max-height: 250px;
+    width: auto;
+    display: block;
+  }
+
+  /* ── Mid-page video band ──────────────────── */
+  .video-band {
+    position: relative;
+    height: clamp(320px, 65vh, 640px);
+    background-color: var(--green);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-band__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+  }
+
+  .video-band__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(29, 46, 30, 0.15) 0%,
+      rgba(29, 46, 30, 0.7) 100%
+    );
+  }
+
+  .video-band__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .video-band__date {
+    color: var(--text-muted);
+    letter-spacing: 0.22em;
+  }
+
+  .video-band__glyph {
+    height: 56px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+  }
+
+  /* ── Countdown ────────────────────────────── */
+  .countdown-section {
+    text-align: center;
+    padding-block: var(--sp-10);
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .countdown-wrap {
+    max-width: 1060px;
+    margin-inline: auto;
+    padding: 0 var(--sp-10);
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 300px;
+    box-shadow: var(--shadow-card);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown__ornament {
+    width: 180px;
+    flex-shrink: 0;
+  }
+
+  .countdown__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .countdown__ornament--top {
+    margin-bottom: var(--sp-4);
+  }
+
+  .countdown__ornament--bottom {
+    margin-top: var(--sp-4);
+    transform: scaleY(-1);
+  }
+
+  .countdown__eyebrow {
+    opacity: 0.45;
+  }
+
+  .countdown {
+    display: flex;
+max-width:720px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  .countdown__number {
+    font-size: clamp(4.5rem, 8vw, 7.5rem);
+    font-style: italic;
+    font-weight: 100;
+    color: var(--text-dark);
+    line-height: 1;
+    min-width: 2.5ch;
+    text-align: center;
+  }
+
+  .countdown__label {
+    opacity: 0.4;
+    margin-top: var(--sp-2);
+  }
+
+  .countdown__sep {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-style: italic;
+    font-weight: 100;
+    color: var(--text-dark);
+    opacity: 0.2;
+    padding-top: 0.05em;
+    align-self: flex-start;
+  }
+
+  /* ── Secondary nav links ──────────────────── */
+  .page-links {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--sp-10);
+  }
+
+  .page-links__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 520px;
+    width: 100%;
+    padding-inline: var(--gutter);
+  }
+
+  .page-links__ornament {
+    width: 180px;
+    flex-shrink: 0;
+  }
+
+  .page-links__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.35;
+  }
+
+  .page-links__ornament--bottom {
+    transform: scaleY(-1);
+  }
+
+  .page-links__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2.5rem, 5vh, 4rem);
+    padding-block: var(--sp-10);
+    width: 100%;
+  }
+
+  .page-links__link {
+    font-size: var(--text-label);
+    letter-spacing: 0.22em;
+    color: var(--text-dark);
+    opacity: 0.7;
+    transition: opacity var(--duration-fast) var(--ease-out);
+    text-align: center;
+  }
+
+  .page-links__link:hover {
+    opacity: 1;
+  }
+
+  /* ── Questions ────────────────────────────── */
+  .questions {
+    padding-block: var(--sp-10) var(--sp-10);
+  }
+
+  .questions__wrap {
+    max-width: 640px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+
+  .questions__eyebrow {
+    opacity: 0.45;
+    margin-bottom: var(--sp-2);
+  }
+
+  .questions__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-dark);
+    opacity: 0.8;
+  }
+
+  .questions__body a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Responsive ───────────────────────────── */
+  @media (max-width: 900px) {
+    .story__entry {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-block: var(--sp-6);
+    }
+
+    /* Reset flip ordering — image always above text on mobile */
+    .story__entry--flip .story__text  { order: unset; }
+    .story__entry--flip .story__image { order: unset; }
+
+    .story__image,
+    .story__entry--flip .story__image {
+      order: -1;
+      transform: none;
+    }
+
+    .story__image img {
+      max-width: 300px;
+    }
+
+    .welcome__card {
+      padding: 0 var(--sp-6);
+    }
+
+    .hero__content {
+      max-width: 95vw;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .countdown__sep { display: none; }
+    .countdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-8) 0;
+    }
+
+    .countdown__unit {
+      padding-inline: var(--sp-3);
+    }
+  }
+</style>
+
+<script>
+  const target = new Date('2026-07-04T17:00:00').getTime();
+
+  function pad(n: number) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) return;
+
+    const days    = Math.floor(diff / 86400000);
+    const hours   = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000)  / 60000);
+    const seconds = Math.floor((diff % 60000)    / 1000);
+
+    (document.getElementById('cd-days')    as HTMLElement).textContent = String(days);
+    (document.getElementById('cd-hours')   as HTMLElement).textContent = pad(hours);
+    (document.getElementById('cd-minutes') as HTMLElement).textContent = pad(minutes);
+    (document.getElementById('cd-seconds') as HTMLElement).textContent = pad(seconds);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>

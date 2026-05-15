@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Getting to Beccaris — Sophia & Alex 2026">
+  <Nav />
+  <PageHero video="/videos/689dd62f2e23e3b88597d8fb_50.webm">Getting to<br />Beccaris</PageHero>
+
+  <section class="section-cream travel">
+    <div class="content-wrap">
+
+      <!-- Intro -->
+      <div class="intro prose-wrap" data-fade>
+        <p class="intro__body">
+          Villa Beccaris is nestled in the heart of Italy's Piedmont wine country, surrounded
+          by the gently rolling hills of the Langhe region — a UNESCO World Heritage site
+          celebrated for its vineyards, medieval villages, and world-class cuisine. Just 1.5
+          to 2 hours by car from both Milan and Turin, the villa is perfectly located for a
+          peaceful countryside escape.
+        </p>
+        <p class="intro__body">
+          Monforte d'Alba itself is a charming hilltop village with cobbled streets, cosy
+          wine bars, and spectacular views. Everything is within walking distance from the
+          main square, making it an ideal base for a relaxed and beautiful wedding weekend.
+        </p>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrap" data-fade>
+        <iframe
+          title="Hotel Villa Beccaris location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2841.5609738003855!2d7.967440776828272!3d44.585550571073234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d2b01a732e44f3%3A0xfba35128cd75abc7!2sHotel%20Villa%20Beccaris!5e0!3m2!1sen!2sse!4v1754399349584!5m2!1sen!2sse"
+          width="100%"
+          height="480"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <!-- Routes -->
+      <div class="routes" data-stagger>
+
+        <div class="route">
+          <p class="label route__heading">Flying into Milan (Malpensa or Linate Airport)</p>
+          <div class="route__body">
+            <p>
+              <strong>By car —</strong> 2.5 hours (160–180 km). Take the A7 or A21 autostrada
+              toward Alessandria/Asti, then follow signs to
+              <em>Alba → Barolo → Monforte d'Alba</em>.
+            </p>
+            <p>
+              <strong>By train —</strong> Take a train from <em>Milano Centrale</em> to
+              <em>Alba</em> (1 change in Turin, ~2.5–3 hrs). Then a 30–40 min taxi to
+              Monforte d'Alba.
+            </p>
+          </div>
+        </div>
+
+        <div class="route">
+          <p class="label route__heading">Flying into Turin (Torino Caselle Airport)</p>
+          <div class="route__body">
+            <p>
+              <strong>By car —</strong> 1.5 hours (85–100 km). Take the A6 or A33 autostrada
+              toward <em>Asti → Alba → Monforte d'Alba</em>.
+            </p>
+            <p>
+              <strong>By train —</strong> Train from <em>Torino Porta Nuova</em> to
+              <em>Alba</em> (~1.5 hrs, may require a change). Then taxi to Monforte d'Alba.
+            </p>
+          </div>
+        </div>
+
+        <div class="route">
+          <p class="label route__heading">Getting to Villa Beccaris</p>
+          <div class="route__body">
+
+ <div class="route__note">
+ <p>Via Bava Beccaris 1, 12065 Monforte d'Alba CN, Italy.</p></div>
+            <p>
+              <strong>Taxi from Alba —</strong> A short 30–40 minute taxi ride from Alba station.
+              We recommend booking in advance — especially on the wedding day.
+              Reliable local services include
+              <a href="https://www.maurogiacosa.com/en/" target="_blank" rel="noopener">Giacosa Mauro</a>,
+              <a href="https://taxi100torri.com/" target="_blank" rel="noopener">Taxi 100 Torri</a>,
+              <a href="https://www.albainncc.it/" target="_blank" rel="noopener">Taxi Alba</a>, and
+              <a href="https://langheintaxi.com/en/" target="_blank" rel="noopener">Langhe in Taxi</a>.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="route">
+          <p class="label route__heading">Taxis and shuttles in Piemonte</p>
+          <div class="route__body">
+            <p>
+              We recommend booking taxis in advance — especially on the wedding day. Reliable local services include
+              <a href="https://www.maurogiacosa.com/en/" target="_blank" rel="noopener">Giacosa Mauro</a>,
+              <a href="https://taxi100torri.com/" target="_blank" rel="noopener">Taxi 100 Torri</a>,
+              <a href="https://www.albainncc.it/" target="_blank" rel="noopener">Taxi Alba</a>, and
+              <a href="https://langheintaxi.com/en/" target="_blank" rel="noopener">Langhe in Taxi</a>.
+            </p>
+        
+          </div>
+        </div>
+
+
+        <div class="route">
+          <p class="label route__heading">Parking at Monforte d'Alba</p>
+          <div class="route__body">
+ <div class="route__note">
+ <p><strong>Largo Dott. Gaetini 18, Monforte d'Alba</strong>.</p></div>
+               <p>Villa Beccaris has limited parking, allocated to hotel guests. Additional public parking is available nearby at the above address. The village is small and very walkable so if you park here you'll be close to everything.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <ContactBlock />
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .travel {
+    /* section-cream handles padding-block */
+  }
+
+  .travel .content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
+  }
+
+  /* Intro */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .intro__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* Map */
+  .map-wrap {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .map-wrap iframe {
+    display: block;
+  }
+
+  /* Routes */
+  .routes {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .route {
+    padding-block: var(--sp-10);
+    border-top: 1px solid var(--cream-dark);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .route:last-child {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  /* Centered label heading — matches live site */
+  .route__heading {
+    text-align: center;
+    opacity: 0.5;
+  }
+
+  .route__body {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .route__body p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .route__body em {
+    font-style: italic;
+  }
+
+  .route__body a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Note / callout box */
+  .route__note {
+    background: var(--cream-dark);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-3) var(--sp-5);
+  }
+
+  .route__note p {
+    font-size: var(--text-body-lg) !important;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .route__list {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    padding-left: var(--sp-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .route__list a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+interface Props {
+  subtitle?: string;
+  image?: string;
+  video?: string;
+}
+const { subtitle, image, video } = Astro.props;
+---
+
+<section class="hero">
+  {video && (
+    <video class="hero__video" autoplay muted loop playsinline>
+      <source src={video} type="video/webm" />
+    </video>
+  )}
+  {!video && image && (
+    <div class="hero__image" style={`background-image: url('${image}')`}></div>
+  )}
+  <div class="hero__overlay"></div>
+  <div class="hero__content" data-parallax>
+    <h1 class="hero__title display">
+      <slot />
+    </h1>
+    {subtitle && <p class="hero__sub label">{subtitle}</p>}
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    background-color: var(--green);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.4;
+  }
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(29, 46, 30, 0.15) 0%,
+      rgba(29, 46, 30, 0.7) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(8rem, 46vh, 27rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .hero__title {
+    font-size: var(--text-hero);
+    color: var(--text-light);
+  }
+
+  .hero__sub {
+    color: var(--text-muted);
+    margin-top: var(--sp-2);
+  }
+</style>

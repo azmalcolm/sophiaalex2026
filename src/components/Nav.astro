@@ -1,0 +1,162 @@
+---
+const links = [
+  { href: '/schedule',  label: 'Schedule' },
+  { href: '/beccaris',  label: 'Getting to Beccaris' },
+  { href: '/monforte',  label: 'Staying in Monforte D\'Alba' },
+  { href: '/registry',  label: 'Registry' },
+  { href: '/faq',       label: 'FAQ' },
+  { href: '/rsvp',      label: 'RSVP' },
+];
+---
+
+<nav class="nav">
+  <a href="/" class="nav__wordmark" aria-label="home">
+    <img src="/images/logo-wordmark.svg" alt="Sophia & Alex" height="14" />
+  </a>
+
+  <a href="/" class="nav__glyph" aria-label="home">
+    <img src="/images/logo-glyph.svg" alt="SA monogram" height="52" />
+  </a>
+
+  <button class="nav__toggle" aria-label="menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="nav__drawer" aria-hidden="true">
+  <ul>
+    {links.map(({ href, label }) => (
+      <li><a href={href}>{label}</a></li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  const toggle = document.querySelector('.nav__toggle') as HTMLButtonElement;
+  const drawer = document.querySelector('.nav__drawer') as HTMLElement;
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    drawer.setAttribute('aria-hidden', String(open));
+    drawer.classList.toggle('is-open', !open);
+    toggle.classList.toggle('is-open', !open);
+  });
+</script>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: calc(var(--gutter) * 1.5);
+max-width: 960px;
+margin:0 auto;
+  }
+
+  .nav__wordmark {
+    display: flex;
+    align-items: center;
+    mix-blend-mode: difference;
+  }
+
+  .nav__wordmark img {
+    height: 2rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav__glyph {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    mix-blend-mode: difference;
+  }
+
+  .nav__glyph img {
+    height: 4.25rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+margin: 0 0 0 auto;
+  }
+
+  .nav__toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: #FFFFFF;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .nav__toggle.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav__toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Drawer */
+  .nav__drawer {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-nav) - 1);
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .nav__drawer.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav__drawer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav__drawer a {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .nav__drawer a:hover {
+    opacity: 0.6;
+  }
+
+@media (max-width: 767px) {
+
+  .nav__wordmark {
+display: none;
+}
+}
+</style>

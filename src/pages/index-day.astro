@@ -1,0 +1,513 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { schedule } from '../data/schedule';
+---
+
+<Base title="Sophia & Alex — Wedding Day">
+  <Nav />
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="/images/footer-vineyards.jpg">
+      <source src="/videos/hero.webm" type="video/webm" />
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content" data-parallax>
+      <p class="label hero__eyebrow">The Wedding of</p>
+      <h1 class="hero__title display">
+        Sophia Söderström<br />Alexander Zeeman
+      </h1>
+      <p class="label hero__date">3rd &amp; 4th of July</p>
+    </div>
+  </section>
+
+  <!-- ── Welcome ── -->
+  <section class="section-cream welcome">
+    <div class="content-wrap">
+      <div class="welcome__card" data-fade>
+        <div class="welcome__ornament welcome__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label welcome__heading">Welcome — it's finally here</p>
+        <p class="welcome__body">
+          The weekend is upon us and we couldn't be happier to have you here. Below you'll find
+          everything you need for the days ahead — the schedule, maps of the hotel and village,
+          and who to reach if you need anything. Relax, enjoy, and let the Langhe do the rest.
+        </p>
+        <div class="welcome__ornament welcome__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Schedule ── -->
+  <section class="section-cream schedule">
+    <div class="content-wrap">
+      <p class="label schedule__eyebrow" data-fade>The Weekend</p>
+
+      <div class="schedule__days">
+        {schedule.map((day, i) => (
+          <div class={`schedule__day ${i % 2 === 0 ? '' : 'schedule__day--flip'}`} data-fade>
+            <div class="schedule__text">
+              <div class="schedule__card">
+                <div class="schedule__ornament schedule__ornament--top" aria-hidden="true">
+                  <img src="/images/ornament.png" alt="" />
+                </div>
+                <p class="label schedule__day-label">{day.day}</p>
+                <h2 class="schedule__title display">{day.title}</h2>
+                <div class="schedule__meta">
+                  <span class="label schedule__meta-item">{day.date}</span>
+                  <span class="label schedule__meta-item">{day.time}</span>
+                  <span class="label schedule__meta-item">{day.venue}</span>
+                  <span class="label schedule__meta-item">{day.dresscode}</span>
+                </div>
+                <p class="schedule__desc">{day.description}</p>
+                <div class="schedule__ornament schedule__ornament--bottom" aria-hidden="true">
+                  <img src="/images/ornament.png" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="schedule__photo">
+              <img src={day.image} alt={day.imageAlt} loading="lazy" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Maps ── -->
+  <section class="section-cream maps">
+    <div class="content-wrap">
+      <p class="label maps__eyebrow" data-fade>Find Your Way</p>
+
+      <div class="maps__grid" data-stagger>
+        <div class="map-block">
+          <h2 class="map-block__title display">Villa<br />Beccaris</h2>
+          <div class="map-block__image">
+            <img src="/images/map-beccaris.png" alt="Map of Hotel Villa Beccaris" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="map-block">
+          <h2 class="map-block__title display">Monforte<br />D'Alba</h2>
+          <div class="map-block__image">
+            <img src="/images/map-monforte.png" alt="Map of Monforte d'Alba village" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Help ── -->
+  <section class="section-cream help">
+    <div class="content-wrap">
+      <div class="help__card" data-fade>
+        <div class="help__ornament help__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label help__heading">Need a hand?</p>
+        <p class="help__body">
+          If you need anything over the weekend, our toastmasters are on hand to help.
+          For any logistical questions, our wedding planner Paola is also available.
+        </p>
+        <div class="help__contacts">
+          <div class="help__contact">
+            <span class="label help__contact-role">Toastmasters</span>
+            <p class="help__contact-desc">Look for them at the venue — they'll be easy to spot.</p>
+          </div>
+          <div class="help__contact">
+            <span class="label help__contact-role">Wedding Planner</span>
+            <p class="help__contact-desc">
+              Paola Casetta<br />
+              <a href="tel:+393392977722">+39 339 297 7722</a>
+            </p>
+          </div>
+          <div class="help__contact">
+            <span class="label help__contact-role">Hotel</span>
+            <p class="help__contact-desc">
+              Villa Beccaris reception is staffed around the clock.
+            </p>
+          </div>
+        </div>
+        <div class="help__ornament help__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    background-color: var(--green);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.4;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(29, 46, 30, 0.15) 0%,
+      rgba(29, 46, 30, 0.7) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(3rem, 8vh, 6rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+    animation: hero-rise 1.2s var(--ease-enter) both;
+  }
+
+  .hero__eyebrow {
+    color: var(--text-muted);
+  }
+
+  .hero__title {
+    font-size: var(--text-hero);
+    color: var(--text-light);
+  }
+
+  .hero__date {
+    color: var(--text-muted);
+  }
+
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Welcome ── */
+  .welcome > .content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome__card {
+    max-width: 760px;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+
+  .welcome__ornament {
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  .welcome__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .welcome__ornament--top  { margin-top: -40px; }
+  .welcome__ornament--bottom { margin-bottom: -42px; transform: scaleY(-1); }
+
+  .welcome__heading {
+    opacity: 0.45;
+  }
+
+  .welcome__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* ── Schedule ── */
+  .schedule > .content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+  }
+
+  .schedule__eyebrow {
+    opacity: 0.45;
+  }
+
+  .schedule__days {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-16);
+  }
+
+  .schedule__day {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-10);
+    align-items: center;
+  }
+
+  .schedule__day--flip .schedule__photo {
+    order: -1;
+  }
+
+  .schedule__card {
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+
+  .schedule__ornament {
+    width: 120px;
+    flex-shrink: 0;
+  }
+
+  .schedule__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .schedule__ornament--top  { margin-top: -36px; }
+  .schedule__ornament--bottom { margin-bottom: -38px; transform: scaleY(-1); }
+
+  .schedule__day-label {
+    opacity: 0.4;
+    font-size: var(--text-label);
+  }
+
+  .schedule__title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--text-dark);
+    line-height: 1;
+  }
+
+  .schedule__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .schedule__meta-item {
+    font-size: var(--text-label);
+    opacity: 0.55;
+  }
+
+  .schedule__desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    opacity: 0.75;
+  }
+
+  .schedule__photo {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    min-height: 400px;
+  }
+
+  .schedule__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Maps ── */
+  .maps > .content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+  }
+
+  .maps__eyebrow {
+    opacity: 0.45;
+  }
+
+  .maps__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-10);
+  }
+
+  .map-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .map-block__title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--text-dark);
+    line-height: 1;
+  }
+
+  .map-block__image {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--cream-dark);
+    box-shadow: var(--shadow-card);
+  }
+
+  .map-block__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Help ── */
+  .help > .content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .help__card {
+    max-width: 760px;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-5);
+    text-align: center;
+  }
+
+  .help__ornament {
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  .help__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .help__ornament--top  { margin-top: -40px; }
+  .help__ornament--bottom { margin-bottom: -42px; transform: scaleY(-1); }
+
+  .help__heading {
+    opacity: 0.45;
+  }
+
+  .help__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: var(--content-width);
+  }
+
+  .help__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    width: 100%;
+    border-top: 1px solid var(--cream-dark);
+    padding-top: var(--sp-5);
+  }
+
+  .help__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .help__contact-role {
+    opacity: 0.45;
+    font-size: var(--text-label);
+  }
+
+  .help__contact-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .help__contact-desc a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 767px) {
+    .welcome__card,
+    .help__card {
+      padding: 0 var(--sp-6);
+    }
+
+    .schedule__day {
+      grid-template-columns: 1fr;
+    }
+
+    .schedule__day--flip .schedule__photo {
+      order: unset;
+    }
+
+    .schedule__photo {
+      min-height: 260px;
+    }
+
+    .schedule__card {
+      padding: 0 var(--sp-6);
+    }
+
+    .maps__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

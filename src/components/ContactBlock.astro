@@ -1,0 +1,85 @@
+---
+---
+
+<div class="contact-block">
+  <div class="contact-block__illustration" aria-hidden="true">
+    <img src="/images/villa-beccaris-sketch.png" alt="" />
+  </div>
+
+  <div class="contact-block__text">
+    <p class="label contact-block__eyebrow">Questions?</p>
+    <p>
+      For any questions about travel, accommodations, or the weekend schedule, please first check
+      the information here or visit our <a href="/faq">FAQ section</a>. If you still can't find
+      what you need, reach out at
+      <a href="mailto:ciao@sophiaalex2026.com">ciao@sophiaalex2026.com</a>.
+    </p>
+    <p>
+      For speeches or toasts, contact our toastmasters at
+      <a href="mailto:toastmasters@sophiaalex2026.com">toastmasters@sophiaalex2026.com</a>.
+    </p>
+  </div>
+</div>
+
+<style>
+  .contact-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-10);
+    align-items: center;
+    padding-top: var(--sp-8);
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .contact-block__illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-block__illustration img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    opacity: 0.55;
+  }
+
+  .contact-block__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .contact-block__eyebrow {
+    opacity: 0.45;
+    margin-bottom: var(--sp-1);
+  }
+
+  .contact-block p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-dark);
+    opacity: 0.8;
+  }
+
+  .contact-block a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    .contact-block {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+
+    .contact-block__illustration img {
+      max-width: 280px;
+      margin-inline: auto;
+    }
+  }
+</style>

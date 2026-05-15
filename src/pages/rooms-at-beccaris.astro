@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Rooms at Villa Beccaris — Sophia & Alex 2026">
+  <Nav />
+  <PageHero video="/videos/689dd62f2e23e3b88597d8fb_50.webm">Rooms at<br />Villa Beccaris</PageHero>
+
+  <section class="section-cream rooms">
+    <div class="content-wrap">
+
+      <!-- Intro -->
+      <div class="intro prose-wrap" data-fade>
+        <p class="intro__body">
+          We would love for as many of our guests as possible to stay at Hotel Villa Beccaris,
+          where the wedding will take place. A number of rooms are pre-assigned to close family
+          and the wedding party. The remaining rooms are available to book directly with the hotel
+          on a first come, first served basis.
+        </p>
+      </div>
+
+      <!-- Booking card -->
+      <div class="booking-card" data-fade>
+        <div class="booking-card__ornament booking-card__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label booking-card__eyebrow">How to book</p>
+        <div class="booking-card__body">
+          <p>
+            Email <a href="mailto:villa@villabeccaris.it">villa@villabeccaris.it</a> and mention
+            you're attending <strong>Sophia &amp; Alex's wedding on 4 July 2026</strong>.
+            The hotel will confirm availability, rates, and details for your stay. To secure
+            your booking, simply provide your credit card details for the full (non-refundable)
+            payment. Once payment is processed, you'll receive a confirmation email directly
+            from the hotel.
+          </p>
+        </div>
+        <div class="booking-card__ornament booking-card__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+
+      <!-- Room listings -->
+      <div class="rooms-list" data-stagger>
+
+        <div class="room">
+          <div class="room__photo">
+            <img src="/images/camera-standard-1.jpg" alt="Comfort Double room" loading="lazy" />
+          </div>
+          <div class="room__text">
+            <h2 class="room__name display">Comfort Double</h2>
+            <span class="room__price label">€240 / night</span>
+            <span class="room__size label">18 m²</span>
+            <p class="room__desc">
+              Cosy and well-appointed double rooms with classic Piedmontese touches. Garden or
+              courtyard views, with all the essentials for a comfortable stay.
+            </p>
+          </div>
+        </div>
+
+        <div class="room">
+          <div class="room__photo">
+            <img src="/images/camera-classic-3.jpg" alt="Superior room" loading="lazy" />
+          </div>
+          <div class="room__text">
+            <h2 class="room__name display">Superior Room</h2>
+            <span class="room__price label">€280 / night</span>
+            <span class="room__size label">21 m²</span>
+            <p class="room__desc">
+              Spacious superior rooms with upgraded furnishings and views over the hotel gardens
+              or the surrounding Langhe hills. Ideal for a relaxed and elegant stay.
+            </p>
+          </div>
+        </div>
+
+        <div class="room">
+          <div class="room__photo">
+            <img src="/images/camera-deluxe-1.jpg" alt="Deluxe room" loading="lazy" />
+          </div>
+          <div class="room__text">
+            <h2 class="room__name display">Deluxe Room</h2>
+            <span class="room__price label">€320 / night</span>
+            <span class="room__size label">26 m²</span>
+            <p class="room__desc">
+              The most generous rooms in the hotel, with premium fittings and the best views of
+              the vineyard-covered hills. Perfect for those wanting a little extra luxury during
+              the wedding weekend.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <!-- Fine print -->
+      <div class="booking-card" data-fade>
+        <div class="booking-card__ornament booking-card__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <div class="booking-card__body">
+          <p class="fine-print prose-wrap" data-fade>
+        All bookings and payments are handled directly with the hotel. Rates are per room per
+        night and are non-refundable once confirmed.
+      </p>
+        </div>
+        <div class="booking-card__ornament booking-card__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+
+      <ContactBlock />
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .rooms > .content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
+  }
+
+  /* ── Intro ── */
+  .intro__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* ── Booking card ── */
+  .booking-card {
+    max-width: 860px;
+    margin-inline: auto;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-12);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-5);
+  }
+
+  .booking-card__ornament {
+    width: 160px;
+    margin-inline: auto;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  .booking-card__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .booking-card__ornament--top {
+    margin-top: -38px;
+    margin-bottom: 0;
+  }
+
+  .booking-card__ornament--bottom {
+    margin-bottom: -38px;
+    margin-top: 0;
+    transform: scaleY(-1);
+  }
+
+  .booking-card__eyebrow {
+    opacity: 0.45;
+  }
+
+  .booking-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    text-align: left;
+    max-width: var(--content-width);
+  }
+
+  .booking-card__body p {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .booking-card__body a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Room listings ── */
+  .rooms-list {
+    display: flex;
+    flex-direction: column;
+max-width: 720px;
+margin: 0 auto;
+  }
+
+  .room {
+    padding-block: var(--sp-5);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-10);
+    align-items: stretch;
+  }
+
+  .room__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    justify-content: center;
+  }
+
+  .room__name {
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    font-style: italic;
+    font-weight: 100;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+
+  .room__price {
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .room__size {
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  .room__desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    opacity: 0.75;
+  }
+
+  .room__photo {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    min-height: 300px;
+  }
+
+  .room__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Fine print ── */
+  .fine-print {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    opacity: 1;
+    text-align: left;
+  }
+
+  @media (max-width: 767px) {
+    .booking-card {
+      padding: 0 var(--sp-6);
+    }
+
+    .room {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+
+    .room__photo {
+      order: -1;
+      min-height: 240px;
+    }
+  }
+</style>

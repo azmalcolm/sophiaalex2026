@@ -1,0 +1,409 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const days = [
+  {
+    heading: 'Friday\n3rd July',
+    events: [
+      { time: '5:30 PM',  desc: 'Welcome drink',      location: 'Hotel Villa Beccaris, North Garden', dresscode: 'Italian summer cocktail' },
+    ],
+  },
+  {
+    heading: 'Saturday\n4th July',
+    events: [
+      { time: '10:00 AM', desc: 'Yoga or football',   location: 'Hotel Villa Beccaris, by the pool',  dresscode: 'Activewear' },
+      { time: '1:00 PM',  desc: 'Galleria delle Ortensie & pool closed for wedding preparations' },
+      { time: '5:00 PM',  desc: 'Ceremony', location: 'Hotel Villa Beccaris, under the cedar tree', dresscode: 'Black tie' },
+      { time: '5:30 PM',  desc: 'Aperitivo' },
+      { time: '6:45 PM',  desc: 'Reception dinner' },
+      { time: '11:00 PM', desc: 'Party',              location: 'TBD',                                dresscode: 'Black tie' },
+    ],
+  },
+];
+---
+
+<Base title="Weekend Timetable — Sophia & Alex 2026">
+  <Nav />
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="/images/footer-vineyards.jpg">
+      <source src="/videos/hero.webm" type="video/webm" />
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content" data-parallax>
+      <p class="label hero__eyebrow">The Wedding of</p>
+      <h1 class="hero__title display">
+        Sophia Söderström<br />Alexander Zeeman
+      </h1>
+      <p class="label hero__date">3rd &amp; 4th of July</p>
+    </div>
+  </section>
+
+  <!-- ── Intro card ── -->
+  <section class="section-cream intro-section">
+    <div class="content-wrap intro-wrap">
+      <div class="card" data-fade>
+        <div class="card__ornament card__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label card__eyebrow">Welcome — it's finally here</p>
+        <p class="card__body">
+          The weekend is upon us and we couldn't be happier to have you here. Below you'll
+          find everything you need for the days ahead — the schedule, maps of the hotel and
+          village, and who to reach if you need anything. Relax, enjoy, and let the Langhe
+          do the rest.
+        </p>
+        <div class="card__ornament card__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timetable ── -->
+  <section class="section-cream timetable">
+    <div class="content-wrap timetable__wrap">
+
+      {days.map((day, i) => (
+        <>
+          {i > 0 && (
+            <div class="day-divider" aria-hidden="true">
+            </div>
+          )}
+
+          <div class="day" data-fade>
+            <h2 class="day__heading display">
+              {day.heading.split('\n').map((line, j) => (
+                <>{j > 0 && <br />}{line}</>
+              ))}
+            </h2>
+
+            <ol class="events">
+              {day.events.map(ev => (
+                <li class="event">
+                  <span class="event__time label">{ev.time}</span>
+                  <span class="event__body">
+                    <span class="event__desc">{ev.desc}</span>
+                    {(ev.location || ev.dresscode) && (
+                      <span class="event__meta">
+                        {ev.location && <span class="event__meta-item">{ev.location}</span>}
+                        {ev.dresscode && <span class="event__meta-item">Dress code: {ev.dresscode}</span>}
+                      </span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </>
+      ))}
+
+    </div>
+  </section>
+
+  <!-- ── Outro card ── -->
+  <section class="section-cream outro-section">
+    <div class="content-wrap intro-wrap">
+      <div class="card" data-fade>
+        <div class="card__ornament card__ornament--top" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+        <p class="label card__eyebrow">Need a hand?</p>
+        <p class="card__body">
+          If you need anything over the weekend, our toastmasters are on hand to help.
+          For any logistical questions, our wedding planner Paola is also available.
+        </p>
+        <div class="card__contacts">
+          <div class="card__contact">
+            <span class="label card__contact-role">Toastmasters</span>
+            <p class="card__contact-desc">Look for them at the venue — they'll be easy to spot.</p>
+          </div>
+          <div class="card__contact">
+            <span class="label card__contact-role">Wedding Planner</span>
+            <p class="card__contact-desc">
+              Paola Casetta<br />
+              <a href="tel:+393392977722">+39 339 297 7722</a>
+            </p>
+          </div>
+          <div class="card__contact">
+            <span class="label card__contact-role">Hotel</span>
+            <p class="card__contact-desc">Villa Beccaris reception is staffed around the clock.</p>
+          </div>
+        </div>
+        <div class="card__ornament card__ornament--bottom" aria-hidden="true">
+          <img src="/images/ornament.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    background-color: var(--green);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.4;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(29, 46, 30, 0.15) 0%,
+      rgba(29, 46, 30, 0.7) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(3rem, 8vh, 6rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+    animation: hero-rise 1.2s var(--ease-enter) both;
+  }
+
+  .hero__eyebrow { color: var(--text-muted); }
+  .hero__title   { font-size: var(--text-hero); color: var(--text-light); }
+  .hero__date    { color: var(--text-muted); }
+
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Intro / Outro card ── */
+  .intro-section,
+  .outro-section {
+    padding-block: 0;
+  }
+
+  .intro-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 760px;
+    width: 100%;
+    background: rgba(236, 232, 223, 0.6);
+    background-image: url('/images/grain.jpg');
+    background-size: 200px;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0 var(--sp-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+
+  .card__ornament {
+    width: 140px;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  .card__ornament img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.45;
+  }
+
+  .card__ornament--top    { margin-top: -40px; }
+  .card__ornament--bottom { margin-bottom: -42px; transform: scaleY(-1); }
+
+  .card__eyebrow {
+    opacity: 0.45;
+  }
+
+  .card__body {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: var(--content-width);
+  }
+
+  .card__contacts {
+    width: 100%;
+    border-top: 1px solid var(--cream-dark);
+    padding-top: var(--sp-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+  }
+
+  .card__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .card__contact-role {
+    opacity: 0.45;
+  }
+
+  .card__contact-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .card__contact-desc a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Timetable wrapper ── */
+  .timetable__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── Ornament divider between days ── */
+  .day-divider {
+    width: 120px;
+    margin-block: var(--sp-6);
+    opacity: 0.35;
+  }
+
+  .day-divider img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Day block ── */
+  .day {
+    width: 100%;
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-6);
+  }
+
+  .day__label {
+    opacity: 0.4;
+    letter-spacing: 0.22em;
+  }
+
+  .day__heading {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    text-align: center;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.05;
+  }
+
+  /* ── Event list ── */
+  .events {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: var(--sp-4);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--cream-dark);
+    align-items: baseline;
+  }
+
+  .event:last-child {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .event__time {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.12em;
+    opacity: 0.5;
+    white-space: nowrap;
+    padding-top: 0.1em;
+  }
+
+  .event__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .event__desc {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-dark);
+  }
+
+  .event__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .event__meta-item {
+    font-family: var(--font-label);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 767px) {
+    .card {
+      padding: 0 var(--sp-6);
+    }
+
+    .event {
+      grid-template-columns: 5.5rem 1fr;
+      gap: var(--sp-2);
+    }
+
+    .day__heading {
+      font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+  }
+</style>
