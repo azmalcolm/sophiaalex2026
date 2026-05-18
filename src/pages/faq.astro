@@ -31,7 +31,10 @@ import { faq } from '../data/faq';
               {item.image && (
                 <img class="faq-item__img" src={item.image} alt={item.imageAlt ?? ''} loading="lazy" />
               )}
-              <p>{item.answer}</p>
+              {Array.isArray(item.answer)
+                ? item.answer.map((p) => <p>{p}</p>)
+                : <p>{item.answer}</p>
+              }
             </div>
           </details>
         ))}

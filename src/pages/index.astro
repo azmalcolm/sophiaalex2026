@@ -382,16 +382,19 @@ import { story } from '../data/story';
   /* ── Countdown ────────────────────────────── */
   .countdown-section {
     text-align: center;
-    padding-block: var(--sp-10);
+    padding-block: var(--sp-8);
+    padding: 0 var(--sp-2);
     min-height: 45vh;
+width: 100%;
     display: flex;
     align-items: center;
   }
 
   .countdown-wrap {
     max-width: 1060px;
+	width:100%;
     margin-inline: auto;
-    padding: 0 var(--sp-10);
+    padding: 0 var(--sp-4);
     background: rgba(236, 232, 223, 0.6);
     background-image: url('/images/grain.jpg');
     background-size: 300px;
@@ -441,6 +444,15 @@ max-width:720px;
     align-items: center;
     gap: var(--sp-2);
   }
+
+@media (max-width: 600px) {
+  .countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-0);
+  }
+}
 
   .countdown__number {
     font-size: clamp(4.5rem, 8vw, 7.5rem);
@@ -598,7 +610,7 @@ max-width:720px;
     }
 
     .countdown__unit {
-      padding-inline: var(--sp-3);
+      padding-inline: var(--sp-1);
     }
   }
 </style>

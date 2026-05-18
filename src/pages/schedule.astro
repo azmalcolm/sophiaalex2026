@@ -64,6 +64,7 @@ import { schedule } from '../data/schedule';
   .schedule-section {
     padding-block: 0;
     overflow: hidden;
+width:100vw;
   }
 
   /* Each day block */
@@ -87,7 +88,7 @@ import { schedule } from '../data/schedule';
   /* Two columns */
   .day__cols {
     display: grid;
-    grid-template-columns: 55fr 45fr;
+    grid-template-columns: 50fr 50fr;
     align-items: center;
     min-height: 520px;
   }
@@ -203,7 +204,7 @@ import { schedule } from '../data/schedule';
     overflow: hidden;
     align-self: stretch;
     min-height: 520px;
-    aspect-ratio: 1;
+    max-height: 700px;
     /* extend to the right edge of the viewport */
     margin-right: calc(-1 * var(--gutter));
   }
@@ -241,6 +242,8 @@ import { schedule } from '../data/schedule';
       margin-right: calc(-1 * var(--gutter));
       margin-left: calc(-1 * var(--gutter));
       min-height: 280px;
+
+      margin-bottom: 100px;
     }
 
     .day__card-col,

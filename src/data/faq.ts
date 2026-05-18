@@ -1,6 +1,6 @@
 export interface FaqItem {
   question: string;
-  answer: string;
+  answer: string | string[];
   image?: string;
   imageAlt?: string;
 }
@@ -8,17 +8,17 @@ export interface FaqItem {
 export const faq: FaqItem[] = [
   {
     question: 'Who are the toastmasters and what do they do?',
-    answer: 'Our toastmasters for the weekend are the legendary Henningsson sisters — these friendly (and beautiful!) faces will make sure the celebrations run smoothly and that everyone has a wonderful time. If you are planning a speech, toast, or surprise, Sandra and Lisa are the ones to talk to. They will help you coordinate timing and make sure everything goes to plan. Reach them at toastmasters@sophiaalex2026.com.',
+    answer: 'Our toastmasters for the weekend are the legendary Henningsson sisters, these friendly (and beautiful!) faces will make sure the celebrations run smoothly and that everyone has a wonderful time. If you are planning a speech, toast, or surprise, Sandra and Lisa are the ones to talk to. They will help you coordinate timing and make sure everything goes to plan. Reach them at toastmasters@sophiaalex2026.com.',
     image: '/images/IMG_1589.png',
     imageAlt: 'Sandra and Lisa Henningsson, toastmasters',
   },
   {
     question: 'What should I wear each day?',
-    answer: 'Day 1 — Welcome to Italy: Italian summer cocktail. Light, elegant, and festive. Day 2 — The Wedding Day: Black tie. Day 3 — Farewell Sunday: Casual and comfortable.',
+    answer: ['Day 1. Welcome to Italy: Italian summer cocktail. Light, elegant, and festive.','Day 2. The Wedding Day: Black tie.','Day 3. Farewell Sunday: Casual and comfortable.'],
   },
   {
     question: 'What does "black tie" mean?',
-    answer: 'For men, a tuxedo or dark suit with a bow tie or tie is perfect. For women, an elegant dress or outfit in a festive fabric works beautifully. Think elevated evening wear — floor-length gowns, elegant midi dresses, or tailored separates in rich fabrics. If in doubt, dress up rather than down.',
+    answer: 'For men, a tuxedo or dark suit with a bow tie or tie is perfect. For women, an elegant dress or outfit in a festive fabric works beautifully. Think elevated evening wear: floor-length gowns, elegant midi dresses, or tailored separates in rich fabrics. If in doubt, dress up rather than down.',
   },
   {
     question: 'What should I pack?',
@@ -34,15 +34,15 @@ export const faq: FaqItem[] = [
   },
   {
     question: 'Can I get to Monforte d\'Alba without a car?',
-    answer: 'Yes! Take a train from Milan or Turin to Alba, then a 30–40 minute taxi to Monforte d\'Alba. We recommend booking taxis in advance — especially for the wedding day. Reliable local services include Giacosa Mauro, Taxi 100 Torri, Taxi Alba, and Langhe in Taxi.',
+    answer: 'Yes! Take a train from Milan or Turin to Alba, then a 30–40 minute taxi to Monforte d\'Alba. We recommend booking taxis in advance, especially for the wedding day. Reliable local services include Giacosa Mauro, Taxi 100 Torri, Taxi Alba, and Langhe in Taxi.',
   },
   {
     question: 'Will I need a car once I\'m in Monforte?',
-    answer: 'Not really. The village is small and very walkable, and all weekend events are centred around Villa Beccaris. If you\'d like to explore the region — Barolo, La Morra, Serralunga — a car is handy, but not essential for the wedding itself.',
+    answer: 'Not really. The village is small and very walkable, and all weekend events are centred around Villa Beccaris. If you\'d like to explore the region; Barolo, La Morra, Serralunga; a car is handy, but not essential for the wedding itself.',
   },
   {
     question: 'Where can I stay?',
-    answer: 'We have put together a dedicated page with our accommodation recommendations — see the Staying in Monforte section for full details. Rooms at Hotel Villa Beccaris are limited and available on a first come, first served basis, so we recommend booking early.',
+    answer: 'We have put together a dedicated page with our accommodation recommendations, see the Staying in Monforte section for full details. Rooms at Hotel Villa Beccaris are limited and available on a first come, first served basis, so we recommend booking early.',
   },
   {
     question: 'Can I stay extra nights at Villa Beccaris?',
@@ -54,7 +54,7 @@ export const faq: FaqItem[] = [
   },
   {
     question: 'When is the RSVP deadline?',
-    answer: 'Please RSVP by March 1st 2026 so we can finalise all the details with our venue and vendors. The sooner the better — we\'re excited to know you\'re coming!',
+    answer: 'Please RSVP by March 1st 2026 so we can finalise all the details with our venue and vendors. The sooner the better, we\'re excited to know you\'re coming!',
   },
   {
     question: 'Emergency contacts',
@@ -62,7 +62,7 @@ export const faq: FaqItem[] = [
   },
   {
     question: 'What language will be spoken?',
-    answer: 'The ceremony and speeches will be in English so everyone can follow along. You\'ll also hear Swedish and Italian throughout the weekend — part of the charm of a truly international celebration.',
+    answer: 'The ceremony and speeches will be in English so everyone can follow along. You\'ll also hear Swedish and Italian throughout the weekend, part of the charm of a truly international celebration.',
   },
   {
     question: 'Can I take photos during the ceremony?',
@@ -70,7 +70,7 @@ export const faq: FaqItem[] = [
   },
   {
     question: 'Can I park at Hotel Villa Beccaris?',
-    answer: 'Villa Beccaris has limited parking, which will be allocated to guests staying at the hotel. Additional public parking is available nearby at Largo Dott. Gaetini 18, Monforte d\'Alba. That said, Monforte is small and walkable — we recommend leaving the car behind whenever possible.',
+    answer: 'Villa Beccaris has limited parking, which will be allocated to guests staying at the hotel. Additional public parking is available nearby at Largo Dott. Gaetini 18, Monforte d\'Alba. That said, Monforte is small and walkable, we recommend leaving the car behind whenever possible.',
   },
   {
     question: 'What if I have dietary requirements?',
@@ -78,11 +78,11 @@ export const faq: FaqItem[] = [
   },
   {
     question: 'Can I give gifts?',
-    answer: 'Having you with us in Italy is truly the greatest gift you can give. If you still feel you would like to contribute something, a small monetary gift would be warmly appreciated — ideally via bank transfer rather than brought to the venue, as we\'ll be travelling after the wedding.',
+    answer: 'Having you with us in Italy is truly the greatest gift you can give. If you still feel you would like to contribute something, a small monetary gift would be warmly appreciated, ideally via bank transfer rather than brought to the venue, as we\'ll be travelling after the wedding.',
   },
   {
     question: 'Can I extend my stay?',
-    answer: 'Absolutely! Piedmont is one of Italy\'s most beautiful regions — vineyards to explore, truffle tastings, Barolo wine trails, and the charming towns of Bra, Asti, and Alba all within reach. We highly recommend spending a few extra days in the area.',
+    answer: 'Absolutely! Piedmont is one of Italy\'s most beautiful regions: vineyards to explore, truffle tastings, Barolo wine trails, and the charming towns of Bra, Asti, and Alba all within reach. We highly recommend spending a few extra days in the area.',
   },
   {
     question: 'How can I share photos?',

@@ -10,8 +10,9 @@ import Footer from '../components/Footer.astro';
   <Nav />
   <PageHero video="/videos/689dd042d870290e0b7d1c17_12.webm">Staying in<br />Monforte D'Alba</PageHero>
 
-    <div class="content-wrap monforte__upper">
+  <section class="section-cream monforte">
 
+    <div class="content-wrap monforte__upper">
       <!-- Intro -->
       <div class="intro prose-wrap" data-fade>
         <p class="intro__body">
@@ -21,12 +22,129 @@ import Footer from '../components/Footer.astro';
           and vineyards, and the village itself is compact and easy to get around.
         </p>
       </div>
+    </div>
 
-      <!-- Hotel Villa Beccaris — featured card -->
+    <div class="content-wrap monforte__lower">
+      <!-- Activities -->
+      <div class="activities" data-stagger>
+
+        <!-- Local Food Spots -->
+        <div class="activity">
+          <div class="activity__content">
+            <h3 class="activity__title display">Local Food Spots</h3>
+            <div class="activity__body">
+              <p>Gelato at <em>Cremeria Monforte</em><br />
+              Lunch at <em>Osteria La Salita</em><br />
+              Dinner at <em>Le Case della Saracca</em><br />
+              Dinner at <em>Osteria dei Càtari</em><br />
+              Wine bar at <em>Enoteca Rocca</em><br />
+              Wine bar at <em>Barolo Bar</em></p>
+              <p><a href="https://maps.app.goo.gl/8ePSK2yznYrRwQQCA" target="_blank" rel="noopener">Find more local food</a> →</p>
+            </div>
+          </div>
+          <div class="activity__photo">
+            <img src="/images/Schermata-2023-09-04-alle-12.15.54-03-1.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Wine Tastings -->
+        <div class="activity activity--flip">
+          <div class="activity__content">
+            <h3 class="activity__title display">Wine Tastings &amp;<br />Vineyard Tours</h3>
+            <div class="activity__body">
+              <p>Elio Grasso - benchmark Barolo producer.<br />
+              Costa di Bussia - panoramic tasting terrace.<br />
+              Conterno Fantino - modern style vineyards.<br />
+              G.D. Vajra (Barolo) - warm family-run atmosphere.<br />
+              Pio Cesare (Alba) - cellars beneath the old town.</p>
+            </div>
+          </div>
+          <div class="activity__photo">
+            <img src="/images/Schermata-2023-09-04-alle-12.15.54-02-1.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Day Trips -->
+        <div class="activity">
+          <div class="activity__content">
+            <h3 class="activity__title display">Day Trips</h3>
+            <div class="activity__body">
+              <p>
+                <strong>Barolo (5 km)</strong> — Visit the WiMu Wine Museum, stroll through the
+                castle gardens, and explore the charming village lanes.
+              </p>
+              <p>
+                <strong>La Morra (12 km)</strong> — Take in the panoramic views from the
+                Belvedere, see the colourful Cappella del Barolo, or rent e-bikes to ride
+                through the vineyards.
+              </p>
+              <p>
+                <strong>Serralunga d'Alba (9 km)</strong> — Tour the impressive Medieval Castle
+                and enjoy the surrounding views.
+              </p>
+            </div>
+          </div>
+          <div class="activity__photo">
+            <img src="/images/DSCF6747_02.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Jazz Festival -->
+        <div class="activity activity--flip">
+          <div class="activity__content">
+            <h3 class="activity__title display">Monforte Jazz<br />Festival</h3>
+            <div class="activity__body">
+              <p>
+                An open-air jazz festival held in Monforte's natural amphitheatre during July.
+                The exact dates are yet to be confirmed — stay tuned.
+              </p>
+              <p>
+                <a href="https://www.monfortinjazz.it/" target="_blank" rel="noopener">Monforte Jazz Festival</a> →
+              </p>
+            </div>
+          </div>
+          <div class="activity__photo">
+            <img src="/images/Screenshot 2025-09-22 at 22.25.44.png" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Cooking Classes -->
+        <div class="activity">
+          <div class="activity__content">
+            <h3 class="activity__title display">Cooking Classes &amp;<br />Truffle Experiences</h3>
+            <div class="activity__body">
+              <p>
+                Cooking classes and truffle hunts are popular activities in the area — and they
+                often book up quickly during summer. If this sounds like something for you, we
+                recommend arranging it in advance.
+              </p>
+              <p>
+                <a href="https://www.getyourguide.com/en-au/-l129783/" target="_blank" rel="noopener">Find tours on GetYourGuide</a> →
+              </p>
+            </div>
+          </div>
+          <div class="activity__photo">
+            <img src="/images/IMG_0866.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Full-width section break -->
+  <div class="page-break" aria-hidden="true">
+    <img src="/images/DSCF67662.png" alt="" />
+  </div>
+
+  <!-- Hotel Villa Beccaris — featured card -->
+  <section class="section-cream">
+    <div class="content-wrap monforte__upper">
+
       <div class="hotel-card-wrap" data-fade>
         <div class="hotel-card">
           <p class="label hotel-card__eyebrow">Our venue</p>
-
           <div class="hotel-card__inner">
             <h2 class="hotel-card__name display">Hotel Villa Beccaris</h2>
             <p class="hotel-card__desc">
@@ -53,7 +171,6 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
         </div>
-
         <div class="hotel-card-photos">
           <img src="/images/DSCF6698.png" alt="Hotel Villa Beccaris" loading="lazy" />
           <img src="/images/DSCF6702.png" alt="Hotel Villa Beccaris" loading="lazy" />
@@ -62,180 +179,46 @@ import Footer from '../components/Footer.astro';
 
       <!-- Hotel listings -->
       <div class="hotels" data-stagger>
-
-        <div class="hotel-row hotel-row--header">
-          <p class="label hotel-row__section-label">Other hotels in Monforte D'Alba</p>
-        </div>
-
         <div class="hotel-row">
-          <div class="hotel-row__name">
-            <a href="/rooms-at-beccaris">Hotel Villa Beccaris</a>
-          </div>
+          <div class="hotel-row__name"><a href="/rooms-at-beccaris">Hotel Villa Beccaris</a></div>
           <div class="hotel-row__meta">
             <span class="hotel-row__price">€240–320 / night</span>
             <span class="hotel-row__capacity">43 guests</span>
           </div>
           <p class="hotel-row__desc">The wedding venue and number one place to enjoy our big day.</p>
         </div>
-
         <div class="hotel-row">
-          <div class="hotel-row__name">
-            <a href="https://www.booking.com/Share-E7lCD0" target="_blank" rel="noopener">La Ribezza Boutique Hotel</a>
-          </div>
+          <div class="hotel-row__name"><a href="https://www.booking.com/Share-E7lCD0" target="_blank" rel="noopener">La Ribezza Boutique Hotel</a></div>
           <div class="hotel-row__meta">
             <span class="hotel-row__price">€350–450 / night</span>
             <span class="hotel-row__capacity">25 guests</span>
           </div>
           <p class="hotel-row__desc">A modern luxury boutique hotel directly opposite Hotel Villa Beccaris.</p>
         </div>
-
         <div class="hotel-row">
-          <div class="hotel-row__name">
-            <a href="https://www.booking.com/Share-6wlg0l" target="_blank" rel="noopener">Hotel Felicin</a>
-          </div>
+          <div class="hotel-row__name"><a href="https://www.booking.com/Share-6wlg0l" target="_blank" rel="noopener">Hotel Felicin</a></div>
           <div class="hotel-row__meta">
             <span class="hotel-row__price">€250–300 / night</span>
             <span class="hotel-row__capacity">40 guests</span>
           </div>
           <p class="hotel-row__desc">Family-run hotel with comfortable rooms and just steps from the main square.</p>
         </div>
-
         <div class="hotel-row">
-          <div class="hotel-row__name">
-            <a href="https://www.booking.com/Share-nacbsb" target="_blank" rel="noopener">Le Case della Saracca</a>
-          </div>
+          <div class="hotel-row__name"><a href="https://www.booking.com/Share-nacbsb" target="_blank" rel="noopener">Le Case della Saracca</a></div>
           <div class="hotel-row__meta">
             <span class="hotel-row__price">€200 / night</span>
             <span class="hotel-row__capacity">12 guests</span>
           </div>
           <p class="hotel-row__desc">A medieval guesthouse in Monforte's center with unique stone-carved rooms and lots of character.</p>
         </div>
-
         <div class="hotel-row">
-          <div class="hotel-row__name">
-            <a href="https://www.booking.com/Share-zgtqOJ" target="_blank" rel="noopener">Hotel Il Grappolo D'Oro</a>
-          </div>
+          <div class="hotel-row__name"><a href="https://www.booking.com/Share-zgtqOJ" target="_blank" rel="noopener">Hotel Il Grappolo D'Oro</a></div>
           <div class="hotel-row__meta">
             <span class="hotel-row__price">€190 / night</span>
             <span class="hotel-row__capacity">40 guests</span>
           </div>
           <p class="hotel-row__desc">A simple, traditional hotel in the town center, offering good value and easy access.</p>
         </div>
-
-      </div>
-    </div>
-
-    <!-- Full-width section break -->
-    <div class="page-break" aria-hidden="true">
-      <img src="/images/DSCF67662.png" alt="" />
-    </div>
-
-    <div class="content-wrap monforte__lower">
-
-      <!-- Activities -->
-      <div class="activities" data-stagger>
-        <!-- Wine Tastings — text left, photo right -->
-        <div class="activity">
-          <div class="activity__content">
-            <h3 class="activity__title display">Wine Tastings &amp;<br />Vineyard Tours</h3>
-            <div class="activity__body">
-              <p>Elio Grasso - benchmark Barolo producer.<br />            
-             Costa di Bussia - panoramic tasting terrace.<br />
-             Conterno Fantino - modern style vineyards.<br />
-             G.D. Vajra (Barolo) - warm family-run atmosphere.<br />
-             Pio Cesare (Alba) - cellars beneath the old town.</p>
-            </div>
-          </div>
-          <div class="activity__photo">
-            <img src="/images/Schermata-2023-09-04-alle-12.15.54-02-1.jpg" alt="" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Jazz Festival — photo left, text right -->
-        <div class="activity activity--flip">
-          <div class="activity__content">
-            <h3 class="activity__title display">Monforte Jazz<br />Festival</h3>
-            <div class="activity__body">
-              <p>
-                An open-air jazz festival held in Monforte's natural amphitheatre during July.
-                The exact dates are yet to be confirmed — stay tuned.
-              </p>
-              <p>
-                <a href="https://www.monfortinjazz.it/" target="_blank" rel="noopener">Monforte Jazz Festival</a>  →
-              </p>
-            </div>
-          </div>
-          <div class="activity__photo">
-            <img src="/images/Screenshot 2025-09-22 at 22.25.44.png" alt="" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Cooking Classes — text left, photo right -->
-        <div class="activity">
-          <div class="activity__content">
-            <h3 class="activity__title display">Cooking Classes &amp;<br />Truffle Experiences</h3>
-            <div class="activity__body">
-              <p>
-                Cooking classes and truffle hunts are popular activities in the area — and they
-                often book up quickly during summer. If this sounds like something for you, we
-                recommend arranging it in advance.
-              </p>
-              <p>
-                <a href="https://www.getyourguide.com/en-au/-l129783/" target="_blank" rel="noopener">Find tours on GetYourGuide</a> →
-              </p>
-            </div>
-          </div>
-          <div class="activity__photo">
-            <img src="/images/IMG_0866.jpg" alt="" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Day Trips — photo left, text right -->
-        <div class="activity activity--flip">
-          <div class="activity__content">
-            <h3 class="activity__title display">Day Trips</h3>
-            <div class="activity__body">
-              <p>
-                <strong>Barolo (5 km)</strong> — Visit the WiMu Wine Museum, stroll through the
-                castle gardens, and explore the charming village lanes.
-              </p>
-              <p>
-                <strong>La Morra (12 km)</strong> — Take in the panoramic views from the
-                Belvedere, see the colourful Cappella del Barolo, or rent e-bikes to ride
-                through the vineyards.
-              </p>
-              <p>
-                <strong>Serralunga d'Alba (9 km)</strong> — Tour the impressive Medieval Castle
-                and enjoy the surrounding views.
-              </p>
-            </div>
-          </div>
-          <div class="activity__photo">
-            <img src="/images/DSCF6747_02.jpg" alt="" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Local Food Spots — text left, photo right -->
-        <div class="activity">
-          <div class="activity__content">
-            <h3 class="activity__title display">Local Food Spots</h3>
-            <div class="activity__body">
-              <p>Gelato at <em>Cremeria Monforte</em><br />
-              Lunch at <em>Osteria La Salita</em><br />
-              Dinner at <em>Le Case della Saracca</em><br />
-              Dinner at <em>Osteria dei Càtari</em><br />
-              Wine bar at <em>Enoteca Rocca</em><br />
-              Wine bar at <em>Barolo Bar</em></p>
-         <p>
-                <a href="https://maps.app.goo.gl/8ePSK2yznYrRwQQCA" target="_blank" rel="noopener">Find more local food</a> →
-              </p>
-            </div>
-          </div>
-          <div class="activity__photo">
-            <img src="/images/Schermata-2023-09-04-alle-12.15.54-03-1.jpg" alt="" loading="lazy" />
-          </div>
-        </div>
-
       </div>
 
       <ContactBlock />
@@ -401,8 +384,7 @@ margin: var(--sp-4);
   }
 
   .hotel-row--header {
-    padding-block: var(--sp-5);
-margin-top: -50px;
+    padding-block: 0 var(--sp-5);
   }
 
   .hotel-row__section-label {
@@ -544,10 +526,12 @@ margin-top: -50px;
     display: block;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 700px) {
   .hotel-card {
 	margin: var(--sp-0);
     box-shadow: var(--shadow-card);
+padding: var(--sp-4) var(--sp-2);
+
     }
 
     .hotel-card__inner {
